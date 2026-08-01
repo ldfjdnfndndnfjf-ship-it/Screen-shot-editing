@@ -179,8 +179,9 @@ body {
   background: #000;
 }
 
-#imageSource {
+#imageCanvas {
   max-width: 100%;
+  height: auto;
   display: block;
   margin: 0 auto;
 }
@@ -189,22 +190,27 @@ body {
   position: absolute;
   min-width: 10px;
   outline: none;
-  border: 1px dashed transparent;
+  border: 1px dashed rgba(56, 189, 248, 0.4);
   cursor: text;
-  padding: 1px 3px;
+  padding: 0px 2px;
   white-space: pre;
-  background: rgba(255, 255, 255, 0.9);
-  color: #000;
+  background: transparent;
+  color: #000000;
   user-select: text;
   -webkit-user-select: text;
   border-radius: 2px;
-  max-width: 90%;
+  line-height: 1;
+}
+
+.editable-text-node.clean-preview {
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .editable-text-node:hover, .editable-text-node:focus {
   border-color: var(--accent);
-  background: #ffffff;
-  box-shadow: 0 0 5px rgba(56, 189, 248, 0.8);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 4px rgba(56, 189, 248, 0.6);
 }
 
 .eraser-node {
@@ -217,6 +223,31 @@ body {
   cursor: move;
   resize: both;
   overflow: hidden;
+}
+
+.eraser-node.clean-preview {
+  border: none !important;
+}
+
+.done-action-bar {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.done-btn {
+  background: linear-gradient(135deg, #38bdf8, #a855f7);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+}
+
+.done-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
 }
 
 .lock-overlay {
