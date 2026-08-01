@@ -28,26 +28,46 @@ body {
 .banner {
   text-align: center;
   margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, rgba(19, 27, 46, 0.8) 100%);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
 }
 
-.banner h1 {
-  font-size: 2.2rem;
-  letter-spacing: 1px;
-  color: var(--accent);
+.stylish-title {
+  font-size: 2.3rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #38bdf8, #a855f7, #38bdf8);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
   text-transform: uppercase;
 }
 
-.dev-tag {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-top: 0.3rem;
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+.stylish-dev {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  color: #e2e8f0;
+}
+
+.glowing-name {
   color: #a855f7;
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.8), 0 0 20px rgba(168, 85, 247, 0.5);
 }
 
 .disclaimer {
   font-size: 0.85rem;
   color: #64748b;
-  margin-top: 0.2rem;
+  margin-top: 0.4rem;
+  letter-spacing: 0.5px;
 }
 
 .main-card {
@@ -171,12 +191,14 @@ body {
   outline: none;
   border: 1px dashed transparent;
   cursor: text;
-  padding: 1px 2px;
+  padding: 1px 3px;
   white-space: pre;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   color: #000;
   user-select: text;
   -webkit-user-select: text;
+  border-radius: 2px;
+  max-width: 90%;
 }
 
 .editable-text-node:hover, .editable-text-node:focus {
