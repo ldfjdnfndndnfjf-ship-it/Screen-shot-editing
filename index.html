@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screen Shot editing Tool</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.css">
+</head>
+<body>
+
+  <div class="lock-overlay" id="lockOverlay">
+    <div class="lock-card">
+      <h2>🔒 Tool Locked</h2>
+      <p class="lock-desc">First follow my WhatsApp Channels to unlock tool</p>
+      
+      <div class="channel-list">
+        <div class="channel-item">
+          <span>Channel Link</span>
+          <a href="https://whatsapp.com/channel/0029VbBiFfJ3LdQN3IBsgF2q" target="_blank" class="follow-btn" onclick="markFollowed(this, 1)">Follow</a>
+        </div>
+        <div class="channel-item">
+          <span>Channel link</span>
+          <a href="https://whatsapp.com/channel/0029VbB47ttDDmFNztpnZf2m" target="_blank" class="follow-btn" onclick="markFollowed(this, 2)">Follow</a>
+        </div>
+        <div class="channel-item">
+          <span>Channel link</span>
+          <a href="https://whatsapp.com/channel/0029VaUjhPYIt5rvVy9fpg3R" target="_blank" class="follow-btn" onclick="markFollowed(this, 3)">Follow</a>
+        </div>
+      </div>
+
+      <button type="button" id="verifyBtn" class="verify-btn" disabled onclick="unlockTool()">Verify & Unlock Tool</button>
+    </div>
+  </div>
+
+  <div id="mainToolContent" style="display: none; width: 100%; max-width: 900px;">
+    <header class="banner">
+      <h1>Screen Shot editing Tool</h1>
+      <p class="dev-tag">Developer Nawab Zada Hacker ☠️ ✌️ 🦅</p>
+      <p class="disclaimer">This Tool is only for Educational purposes</p>
+    </header>
+
+    <main class="main-card">
+      <section class="upload-zone">
+        <input type="file" id="fileInput" accept="image/*" hidden>
+        <button type="button" class="btn primary-btn" onclick="document.getElementById('fileInput').click()">Upload Screenshot</button>
+      </section>
+
+      <section class="editor-workspace" id="workspace" style="display: none;">
+        <div class="action-bar">
+          <button type="button" class="tool-btn active" onclick="switchTab('edit')">line Edit</button>
+          <button type="button" class="tool-btn" onclick="switchTab('crop')">Crop</button>
+          <button type="button" class="tool-btn" onclick="switchTab('filters')">Filters</button>
+          <button type="button" class="tool-btn" onclick="switchTab('eraser')">Eraser</button>
+          <button type="button" class="tool-btn success-btn" onclick="exportImage()">Export HD</button>
+        </div>
+
+        <div class="control-panel" id="editControls">
+          <button type="button" class="btn" onclick="addTextOverlay()">+ Add Text</button>
+          <input type="color" id="textColor" value="#000000">
+          <input type="number" id="textSize" value="16" min="8" max="100">
+        </div>
+
+        <div class="control-panel" id="cropControls" style="display: none;">
+          <button type="button" class="btn" onclick="applyCrop()">Crop</button>
+          <button type="button" class="btn danger-btn" onclick="cancelCrop()">Cancel</button>
+        </div>
+
+        <div class="control-panel" id="filterControls" style="display: none;">
+          <label>Brightness <input type="range" id="bright" min="0" max="200" value="100" onchange="applyFilters()"></label>
+          <label>Contrast <input type="range" id="contrast" min="0" max="200" value="100" onchange="applyFilters()"></label>
+          <label>Grayscale <input type="range" id="gray" min="0" max="100" value="0" onchange="applyFilters()"></label>
+        </div>
+
+        <div class="control-panel" id="eraserControls" style="display: none;">
+          <button type="button" class="btn" onclick="addEraserBlock()">+ Eraser Patch</button>
+          <input type="color" id="eraserColor" value="#ffffff">
+        </div>
+
+        <div class="canvas-wrapper" id="canvasWrapper">
+          <img id="imageSource" alt="Screenshot Workspace">
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
