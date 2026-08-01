@@ -56,7 +56,9 @@ function scanAndMakeTextEditable() {
       const bbox = word.bbox;
       textNode.style.left = `${bbox.x0 * scaleX}px`;
       textNode.style.top = `${bbox.y0 * scaleY}px`;
-      textNode.style.fontSize = `${(bbox.y1 - bbox.y0) * scaleY}px`;
+      
+      let calculatedSize = Math.min(Math.max((bbox.y1 - bbox.y0) * scaleY, 14), 22);
+      textNode.style.fontSize = `${calculatedSize}px`;
 
       makeElementInteractive(textNode);
       canvasWrapper.appendChild(textNode);
@@ -115,6 +117,7 @@ function makeElementInteractive(elm) {
 
   elm.onmousedown = (e) => {
     if (document.activeElement === elm) return;
+    e.preventDefault();
     p3 = e.clientX;
     p4 = e.clientY;
     document.onmouseup = closeDrag;
