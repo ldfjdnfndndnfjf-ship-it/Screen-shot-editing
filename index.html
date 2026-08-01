@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Screen Shot editing Tool</title>
+  <title>Screen Shot Editing Tool</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.js"></script>
@@ -51,7 +51,7 @@
 
       <section class="editor-workspace" id="workspace" style="display: none;">
         <div class="action-bar">
-          <button type="button" class="tool-btn active" onclick="switchTab('edit')">Inline Edit</button>
+          <button type="button" class="tool-btn active" onclick="switchTab('edit')">line Edit</button>
           <button type="button" class="tool-btn" onclick="switchTab('crop')">Crop</button>
           <button type="button" class="tool-btn" onclick="switchTab('filters')">Filters</button>
           <button type="button" class="tool-btn" onclick="switchTab('eraser')">Eraser</button>
@@ -59,7 +59,7 @@
         </div>
 
         <div class="control-panel" id="editControls">
-          <button type="button" class="btn" onclick="scanAndMakeTextEditable()">🔍 Auto-Detect Text</button>
+          <button type="button" class="btn" onclick="scanAndMakeTextEditable()">Auto-Detect Text</button>
           <button type="button" class="btn" onclick="addTextOverlay()">+ Add Text</button>
           <input type="color" id="textColor" value="#000000">
           <input type="number" id="textSize" value="16" min="8" max="100">
@@ -82,7 +82,12 @@
         </div>
 
         <div class="canvas-wrapper" id="canvasWrapper">
-          <img id="imageSource" alt="Screenshot Workspace">
+          <canvas id="imageCanvas"></canvas>
+          <img id="imageSource" alt="Screenshot Workspace" style="display:none;">
+        </div>
+
+        <div class="done-action-bar">
+          <button type="button" class="btn done-btn" onclick="doneEditing()">Done Editing (Preview Clean Image)</button>
         </div>
       </section>
     </main>
